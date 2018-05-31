@@ -1,0 +1,10 @@
+---
+  - name: Networking | Create Network Configurations
+    template:
+      src: ifcfg-adapter.j2
+      dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.value.DEVICE }}"
+      owner: root
+      group: root
+      mode: 0644
+    with_dict: "{{ networking.interfaces | default({}) }}"
+    notify: restart-network
