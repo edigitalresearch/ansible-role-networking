@@ -3,3 +3,4 @@
     systemd:
       name: network
       state: restarted
+    when: networking.restart | default(False)
