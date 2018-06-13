@@ -8,3 +8,4 @@
       mode: 0644
     with_dict: "{{ networking.interfaces | default({}) }}"
     notify: restart-network
+    when: networking is defined
